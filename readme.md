@@ -4,8 +4,8 @@ Based off of the project https://github.com/synapticism/wordpress-gulp-bower-sas
 
 A starting point for Wordpress development for projects. Used Synapticism repo for the basic framework and now customizing it for personal use. Such features chaged have been:
 
-*Adding Bourbon and Neat to the bower install
-*Changed Sass structure to follow a modular work flow and SMACSS - BEM methodology 
+* Adding Bourbon and Neat to the bower install
+* Changed Sass structure to follow a modular work flow and SMACSS - BEM methodology 
 
 
 
@@ -113,8 +113,8 @@ That's all there is to it. Now this script can be switched on or off in two conf
 
 ## TO DO
 
-*Configure functions.php for default setting
-*Set default mobile nav
+* Configure functions.php for default setting
+* Set default mobile nav
 
 
 
