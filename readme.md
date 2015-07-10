@@ -1,10 +1,11 @@
-# WORDPRESS-GULP-BOWER-SASS STARTER KIT
+# WORDPRESS-GULP-BOWER-SASS-BOURBON-NEAT STARTER KIT
 
-Designing WordPress themes the old-fashioned way is time-consuming and error-prone. Automating the build process allows us to integrate best practices into our workflow while saving time. This project is a *starter kit* for developing highly optimized WordPress themes with [Gulp](http://gulpjs.com/), [Bower](http://bower.io/), and [Sass](http://sass-lang.com/). This is *not* meant to be a starter theme or framework (although I have included a *minimum viable theme* to demonstrate some of the possibilities). It is, instead, a kind of *project scaffolding* and *example workflow* for modern and efficient WordPress theme development.
+Based off of the project https://github.com/synapticism/wordpress-gulp-bower-sass
 
-The latest version of this starter kit features a modular Gulp file design inspired by Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). Configuration is isolated from the tasks themselves to make it easier to change paths and modify settings. It is more complicated than [the approach originally described on my blog](http://synapticism.com/dev/wordpress-theme-development-with-gulp-bower-and-sass/) but also far more powerful.
+A starting point for Wordpress development for projects. Used Synapticism repo for the basic framework and now customizing it for personal use. Such features chaged have been:
 
-Local development is now facilitated by your choice of [BrowserSync](http://www.browsersync.io/) or [LiveReload](http://livereload.com/) (the default choice).
+*Adding Bourbon and Neat to the bower install
+*Changed Sass structure to follow a modular work flow and SMACSS - BEM methodology 
 
 
 
@@ -19,19 +20,6 @@ Local development is now facilitated by your choice of [BrowserSync](http://www.
 * [BrowserSync](http://www.browsersync.io/) setup: assuming you have a local development environment setup all you should need to do is enter the URL into the `proxy` setting in `gulpconfig.js`. (Why use BrowserSync? It's fast, awesome, and allows for simultaneous responsive development across multiple devices.)
 * [LiveReload](http://livereload.com/) setup: install a browser extension for [Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) or Firefox. (Why use LiveReload? It does the job without complications.)
 * Run `gulp` and start hacking!
-
-
-
-## VOIDX: A MINIMUM VIABLE THEME
-
-Previously this project shipped without a working theme included. I figured that with all the great starter themes out there (for instance, [_s](https://github.com/Automattic/_s), [Roots](https://github.com/roots/roots), and [Bones](https://github.com/eddiemachado/bones)) it wouldn't be hard to drop one in and start theming. I don't personally use any of these so I was a little surprised to discover how tricky this can be. Starter themes, despite their "bare bones" reputation, are often bulky and opinionated. Some even ship with their own build processes already in place!
-
-It seems there is a need for what I'd call a *minimum viable theme*: a truly bare bones WordPress starter theme featuring only the essentials to get up and running, something that you can assess at a glance. For the purposes of this project I have created such a theme, tentatively named `voidx`. It isn't pretty but it works well enough to show off some of the possibilities inherent in working with Gulp, Bower, and Sass. Feel free to play with it or clear it out from this repo as you wish. All files under `src` can be replaced by your own files.
-
-There are two components worth a closer look, however:
-
-* The script variable and enqueuing functions in `src/inc/assets.php`; these are tightly coupled with the output of the build process.
-* The theme configuration pattern described in `functions.php` and `functions-config-defaults.php`.
 
 
 
@@ -125,25 +113,14 @@ That's all there is to it. Now this script can be switched on or off in two conf
 
 ## TO DO
 
-* Yeoman generator ([open issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues/1); [some help here](http://yeoman.io/authoring/) would be awesome since I don't personally use Yeoman).
-* A proper wipe/clean task chain (waiting for Gulp 4).
-* Better error handling (waiting for Gulp 4).
-* [Reduce unnecessary wrapper plugins](https://github.com/sogko/gulp-recipes/tree/master/unnecessary-wrapper-gulp-plugins).
-* RTL support with [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss)?
-* Explore using Gulp for I18n (a quick scan revealed nothing obviously useful).
-* Remember to update filenames when updating to HTML5 History API 4.2 (next release).
-* Feature requests welcome; [open an issue](https://github.com/synapticism/wordpress-gulp-bower-sass/issues)!
-
-
-
-## SEE ALSO
-
-Like the approach but prefer something more mature, sophisticated, and opinionated? Check out [Sage](https://roots.io/sage/) and [Bedrock](https://github.com/roots/bedrock) from [Roots](http://roots.io/).
+*Configure functions.php for default setting
+*Set default mobile nav
 
 
 
 ## CREDITS
 
+Based off of the project https://github.com/synapticism/wordpress-gulp-bower-sass. 
 The initial version of this repo featured a `gulpfile.js` adapted from [Matt Banks](http://mattbanks.me/gulp-wordpress-development/). Additional credit is due to [Mark Goodyear](http://markgoodyear.com/2014/01/getting-started-with-gulp/). The current version is largely based on Dan Tello's excellent [gulp-starter](https://github.com/greypants/gulp-starter). The theme templates included in this project ultimately descend from Twenty Twelve.
 
 
@@ -152,4 +129,3 @@ The initial version of this repo featured a `gulpfile.js` adapted from [Matt Ban
 
 [GPL 3.0](http://www.gnu.org/licenses/gpl.txt).
 
-You are encouraged to link back to [my web site](http://synapticism.com) and/or [this GitHub repository](https://github.com/synapticism/wordpress-gulp-bower-sass) if you find this at all useful. I am also available via [Twitter](https://twitter.com/synapticism) for the occasional support inquiry.
