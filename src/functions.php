@@ -35,6 +35,8 @@ function voidx_setup() {
 }
 add_action( 'after_setup_theme', 'voidx_setup', 11 );
 
+add_theme_support('post-thumbnails');
+
 // Sidebar declaration
 function voidx_widgets_init() {
   register_sidebar( array(
@@ -153,3 +155,31 @@ add_action( 'widgets_init', 'voidx_widgets_init' );
       }
     }
     add_action('init', 'df_disable_comments_admin_bar');
+
+// ==== SHOTCODES (some basic shortcodes we will always use) ==== //
+
+  // Custom Taxonomy Shortcode
+      function list_terms_custom_taxonomy( $atts ) {
+
+          // Inside the function we extract custom taxonomy parameter of our shortcode
+          extract( shortcode_atts( array(
+            'custom_taxonomy' => '',
+          ), $atts ) );
+
+        // arguments for function wp_list_categories
+        $args = array( 
+        taxonomy => $custom_taxonomy,
+        title_li => ''
+        );
+
+        // We wrap it in unordered list 
+        echo '<ul>'; 
+        echo wp_list_categories($args);
+        echo '</ul>';
+      }
+
+      // Add a shortcode that executes our function
+      add_shortcode( 'ocular_category', 'list_terms_custom_taxonomy' );
+
+      //Allow Text widgets to execute shortcodes
+      add_filter('widget_text', 'do_shortcode');
