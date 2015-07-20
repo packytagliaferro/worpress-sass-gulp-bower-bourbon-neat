@@ -23,7 +23,7 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
   // WP AJAX Page Loader (pg8); this requires a bit more setup as outlined in the documentation: https://github.com/synapticism/wp-ajax-page-loader
   $script_vars_pg8 = '';
   if ( VOIDX_SCRIPTS_PAGELOAD && ( is_archive() || is_home() || is_search() ) ) {
-    $script_name .= '-pg8';
+    $script_name .= 'app';
 
     global $wp_query;
 
@@ -41,11 +41,11 @@ if ( !function_exists( 'voidx_enqueue_scripts' ) ) : function voidx_enqueue_scri
 
   // Default script name
   if ( empty( $script_name ) )
-    $script_name = '-core';
+    $script_name = 'app';
 
   // Load theme-specific JavaScript bundles with versioning based on last modified time; http://www.ericmmartin.com/5-tips-for-using-jquery-with-wordpress/
   // The handle is the same for each bundle since we're only loading one script; if you load others be sure to provide a new handle
-  wp_enqueue_script( $script_handle, get_stylesheet_directory_uri() . '/js/' . $ns . $script_name . $suffix . '.js', array( 'jquery' ), filemtime( get_template_directory() . '/js/' . $ns . $script_name . $suffix . '.js' ), true );
+  wp_enqueue_script( $script_handle, get_stylesheet_directory_uri() . '/js/' . $script_name . $suffix . '.js', array( 'jquery' ), filemtime( get_template_directory() . '/js/' . $ns . $script_name . $suffix . '.js' ), true );
 
   // Pass variables to JavaScript at runtime; see: http://codex.wordpress.org/Function_Reference/wp_localize_script
   $script_vars = apply_filters( 'voidx_script_vars', $script_vars );

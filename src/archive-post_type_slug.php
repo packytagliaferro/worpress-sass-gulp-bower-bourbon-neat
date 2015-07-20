@@ -9,7 +9,7 @@
         	<?php
 			    $terms = get_terms("custom_category"); //Change this to custom category from the functions-config.php
 			    $count = count($terms);
-			    echo '<div id="category-filter">';
+			    echo '<div id="category-filter" class="button-group">';
 			    echo '<button data-filter="*">All</button>';
 			        if ( $count > 0 )
 			        {   
