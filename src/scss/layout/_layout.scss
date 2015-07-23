@@ -19,7 +19,7 @@
     background: color(header-background);
     padding-bottom: spacer(1 / 2);
     padding-top: spacer(1 / 2);
-    @include media-above($break-large) {
+    @include media($break-desktop) {
         padding-left: spacer(2);
         padding-right: spacer(2);
     }
@@ -28,7 +28,7 @@
 .wrap-main {
     // Wrapper around content and sidebar
     @extend %clearfix;
-    @include media-above($break-large) {
+    @include media($break-desktop) {
         @include outer-container($width-site);
         padding: 0 spacer(2) 0 spacer(2);
     }
@@ -37,7 +37,7 @@
 .wrap-content {
     @extend %wrap;
     padding: spacer();
-    @include media-above($break-large) {
+    @include media($break-desktop) {
         float: left;
         padding-left: 0;
         padding-right: spacer();
@@ -48,7 +48,7 @@
 .wrap-sidebar {
     @extend %wrap;
     padding: spacer();
-    @include media-above($break-large) {
+    @include media($break-desktop) {
         float: right;
         padding-left: spacer();
         padding-right: 0;
@@ -61,7 +61,7 @@
     background: color(header-background);
     padding-bottom: spacer(2);
     padding-top: spacer(1 / 2);
-    @include media-above($break-large) {
+    @include media($break-desktop) {
         padding-left: spacer(2);
         padding-right: spacer(2);
     }
@@ -78,6 +78,10 @@
 
 .site-description, .site-title {
     @extend %hide;
+}
+
+.site-branding {
+    width: scut-em(150);
 }
 
 .site-content {

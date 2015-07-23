@@ -54,10 +54,10 @@ module.exports = {
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks to concatenate; warning: it's up to you to manage dependencies!
       core: ['core']
-    , pg8: ['pg8', 'core']
+    , app: ['pg8', 'core']
     }
   , chunks: { // Chunks are arrays of globs matching source files that combine to provide specific functionality
-      core: [src+'js/navigation.js', src+'js/core.js']
+      core: [src+'js/navigation.js', src+'js/core.js', src+'js/filter.js', src+'js/modal.js']
     , pg8: [bower+'html5-history-api/history.js', bower+'spin.js/spin.js', bower+'spin.js/jquery.spin.js', bower+'wp-ajax-page-loader/wp-ajax-page-loader.js', src+'js/page-loader.js']
     }
   , dest: build+'js/' // Where the scripts end up
@@ -70,7 +70,7 @@ module.exports = {
     , uglify: {}
     , dest: build+'js/'
     }
-  , namespace: 'wp-' // Script filenames will be prefaced with this (optional; leave blank if you have no need for it but be sure to change the corresponding value in `src/inc/assets.php`)
+  , namespace: '' // Script filenames will be prefaced with this (optional; leave blank if you have no need for it but be sure to change the corresponding value in `src/inc/assets.php`)
   },
 
   styles: {

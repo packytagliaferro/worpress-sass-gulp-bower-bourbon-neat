@@ -61,4 +61,5 @@ Make the custom post filetrable
 	}); //End filter function
 
 
+
 }(jQuery));

@@ -14,9 +14,15 @@
     visibility: hidden;
     width: 300px;
     height: 100%;
-    background: #48a770;
+    background: $color-secondary;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
+    @include media($break-desktop) {
+        position: relative;
+        width: 100%;
+        background: transparent;
+        @include transition(all 0s);
+    }
 }
 
 .menu::after {
@@ -44,6 +50,10 @@
     visibility: visible;
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
+    @include media($break-desktop) {
+        -webkit-transform: none;
+        transform: none;
+    }
 }
 
 .mobile-menu-open {
@@ -54,4 +64,20 @@
 
 .mobile-menu.menu::after {
     display: none;
+}
+
+#menu-header {
+    li {
+        text-align: right;
+        @include media($break-desktop) {
+            text-align: left;
+            display: inline-block;
+        }
+    }
+}
+
+#responsive-menu-toggle {
+    @include media($break-desktop) {
+        display: none;
+    }
 }
