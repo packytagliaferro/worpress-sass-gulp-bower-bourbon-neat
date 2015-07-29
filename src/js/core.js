@@ -3,6 +3,10 @@
 // A simple wrapper for all your custom jQuery; everything in this file will be run on every page
 ;(function($){
 
+//Global vars
+var myDirectoryPath = YOURSITENAME.templateURI;
+var isTouchDevice = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|BB10|Windows Phone|Tizen|Bada)/);
+var eventType = (isTouchDevice) ? 'touchend' : 'click';
 
 /********************************
 Make the custom post filetrable 
@@ -59,6 +63,121 @@ Make the custom post filetrable
 	  
 
 	}); //End filter function
+
+
+/********************************
+	Put images in modal
+********************************/
+	
+	//General Varibales 
+	var linkedImg = $('body').find( $('img').parent('a') );
+	linkedImg.attr('ocular-image', '1');
+
+
+	$('a[ocular-image]').off().on('click', function(e) {
+		
+		event.preventDefault();
+
+		//get the array info
+		var dataTag = $(this).attr('ocular-image');
+        var ocularTags = $('.site-content').find("[ocular-image=" + dataTag + "]");
+
+		//Get the image info
+		var currentImageIndex = ocularTags.index($(this));
+        var currentImage = ocularTags.index($(this)) +1;
+        var totalImages = ocularTags.length;
+		var url = $(this).attr('href');
+		var title = $(this).children().attr('title');
+
+		//append to the modal
+		$('#modal-image .modal-body').append('<img src="' + url + '" >');
+		$('#modal-image .modal-header').append('<h4>' + title + '</h4>');
+		$('.modal-content').append('<div class="modal-controls"><div class="icon-previous"><img src="' + myDirectoryPath + '/img/icon-left.svg"></div>
+            	<div class="modal-imageTotal"><p><span id="ocularCurrentImage"> '+ currentImage +'</span> of '+ totalImages +'</p></div>
+            	<div class="icon-next"><img src="' + myDirectoryPath + '/img/icon-right.svg"></div></div>');
+
+		//Navigation vars
+		var $next = $('.icon-next');
+    	var $prev = $('.icon-previous');
+
+
+		//Show Nav
+		if(currentImage == 1){
+          $prev.hide();
+        } else {
+          $prev.show();
+        }
+
+        if(currentImage == totalImages){
+          $next.hide();
+        } else {
+          $next.show();
+        }
+
+        function updateImage(i){
+
+              var nextImage = ocularTags.get(i);
+              var nextImageSrc = $(nextImage).attr('href');
+              var nextImageTitle = $(nextImage).children().attr('title');
+              var nextImageNumber = (i) + 1;
+              var image = $('#modal-image .modal-body img');
+              var animateOut = 'animated alternate iteration zoomOut';
+              var animateIn = 'animated alternate iteration zoomIn';
+  			  var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+
+              image.removeClass(animateIn).addClass(animateOut).one(animationEnd,function() {
+			      $(this).removeClass(animateOut);
+			      image.attr('src', nextImageSrc).addClass(animateIn);
+			  });
+
+              //Update slide title
+              $('#modal-image .modal-header h4').replaceWith( '<h4> '+ nextImageTitle + '</h4>');
+              //update slide nextImageNumber
+              $('#ocularCurrentImage').replaceWith('<span id="ocularCurrentImage">'+ nextImageNumber +'</span>');
+
+              //remove arrows
+              if(nextImageNumber == totalImages){
+                $next.hide();
+              } else {
+                $next.show();
+              }
+
+              if (nextImageNumber == 1) {
+                $prev.hide();
+              } else {
+                $prev.show();
+              }
+
+        }
+        //navigate through slides
+        $('.icon-previous img').off().on( eventType, function() {
+            
+            currentImageIndex = (currentImageIndex) - 1;
+            updateImage(currentImageIndex); 
+
+        });
+
+        $('.icon-next img').off().on( eventType, function() {
+
+            currentImageIndex = (currentImageIndex) + 1;
+            updateImage(currentImageIndex);
+
+        });
+        
+
+
+		//open the modal
+		Custombox.open({
+			target: '#modal-image',
+			//effect: 'slide',
+			close: function () {
+				$('#modal-image .modal-body img, #modal-image .modal-header h4, .icon-close, .modal-controls').remove();
+			}
+		});
+	});
+
+	//remove appended modal images
 
 
 

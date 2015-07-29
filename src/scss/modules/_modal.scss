@@ -1,5 +1,149 @@
 /*
  ----------------------------
+ General Styles
+ ----------------------------
+ */
+.icon-close {
+    width: scut-em(40);
+    @include position(absolute, null 0 null null);
+    @include margin(1em 2em 1em 2em);
+    z-index: 1510;
+}
+
+.modal-controls {
+    width: scut-em(200);
+    @include scut-center-block;
+    position: relative;
+    height: scut-em(50);
+    .icon-previous {
+        width: scut-em(40);
+        @include position(absolute, 0 null null 0);
+    }
+    .icon-next {
+        width: scut-em(40);
+        @include position(absolute, 0 0 null null);
+    }
+    .modal-imageTotal {
+        width: scut-em(70);
+        @include scut-center-block;
+        p {
+            text-align: center;
+            color: $white;
+        }
+    }
+}
+
+#modal-image {
+    .modal-header {
+        color: white;
+    }
+    .modal-content {
+        img {
+            max-height: 75vh;
+            -webkit-transform-style: preserve-3d;
+        }
+    }
+}
+
+/*
+ ----------------------------
+ Animation Styles
+ ----------------------------
+ */
+
+.animated {
+    @include animation-duration(1s);
+    @include animation-fill-mode(both);
+    &.infinite {
+        @include animation-iteration-count(infinite);
+    }
+    &.alternate {
+        @include animation-direction(alternate);
+    }
+    &.iteration {
+        @include animation-iteration-count(1);
+    }
+}
+
+// Tweak the keyframes below. Or swap them with another animation pattern at 
+// https://github.com/daneden/animate.css/tree/master/source
+
+@-webkit-keyframes zoomOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes zoomOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.zoomOut {
+    -webkit-animation-name: zoomOut;
+    animation-name: zoomOut;
+}
+
+@-webkit-keyframes zoomIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+/*
+ ----------------------------
  Actions
  ----------------------------
  */
@@ -51,8 +195,11 @@
 }
 
 .custombox-modal-container {
-    margin: 0 auto;
+    margin: 20% auto;
     position: relative;
+    @include media($break-desktop) {
+        margin: 5% auto;
+    }
 }
 
 .custombox-modal img {

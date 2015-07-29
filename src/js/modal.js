@@ -31,10 +31,10 @@ var Custombox = (function ( w, d, h ) {
         id:             null,               // Set the ID for the modal.
         cache:          false,              // If set to false, it will force requested pages not to be cached by the browser only when send by AJAX.
         escKey:         true,               // Allows the user to close the modal by pressing 'ESC'.
-        zIndex:         'auto',             // Overlay z-index: Auto or number.
+        zIndex:         '1000',             // Overlay z-index: Auto or number.
         overlay:        true,               // Show the overlay.
         overlayColor:   '#000',             // Overlay color.
-        overlayOpacity: 0.6,                // The overlay opacity level. Range: 0 to 1.
+        overlayOpacity: 0.7,                // The overlay opacity level. Range: 0 to 1.
         overlayClose:   true,               // Allows the user to close the modal by clicking the overlay.
         overlaySpeed:   300,                // Sets the speed of the overlay, in milliseconds.
         overlayEffect:  'auto',             // Combine any of the effects.
@@ -162,6 +162,17 @@ var Custombox = (function ( w, d, h ) {
             _cache.container.push(_cache.create.call(d, 'div'));
             _cache.container[_cache.item].classList.add('custombox-modal-container');
             _cache.container[_cache.item].classList.add('custombox-modal-container-' + _cache.settings[_cache.item].effect);
+
+            function closeButton() {
+                var myDirectoryPath = YOURSITENAME.templateURI;
+                var content = '<img src="' + myDirectoryPath + '/img/icon-close.svg" onclick="Custombox.close();" class="icon-close svg" alt="close modal">';
+                var element = document.createElement("b");
+                element.innerHTML = content;
+                return element;
+            }
+           
+            _cache.wrapper[_cache.item].appendChild(closeButton());
+
             _cache.container[_cache.item].style.zIndex = zIndex + 4;
 
             // Position.
@@ -283,7 +294,7 @@ var Custombox = (function ( w, d, h ) {
             // Width.
             if ( _cache.size[_cache.item] + 60 >= w.innerWidth ) {
                 _cache.container[_cache.item].style.width = 'auto';
-                _cache.container[_cache.item].style.margin = '5%';
+                //_cache.container[_cache.item].style.margin = '5%';
                 _cache.wrapper[_cache.item].style.width = w.innerWidth + 'px';
                 for ( var i = 0, elements = _cache.content[_cache.item].querySelectorAll(':scope > *'), t = elements.length; i < t; i++ ) {
                     if ( elements[i].offsetWidth > w.innerWidth ) {
@@ -307,8 +318,8 @@ var Custombox = (function ( w, d, h ) {
 
             // Top.
             if ( _cache.content[_cache.item].offsetHeight >= w.innerHeight ) {
-                _cache.container[_cache.item].style.marginTop = '5%';
-                _cache.container[_cache.item].style.marginBottom = '5%';
+                //_cache.container[_cache.item].style.marginTop = '5%';
+                //_cache.container[_cache.item].style.marginBottom = '5%';
             } else {
                 var result;
                 switch ( _cache.settings[_cache.item].position[1].trim() ) {
@@ -322,7 +333,7 @@ var Custombox = (function ( w, d, h ) {
                         result = w.innerHeight / 2 - _cache.content[_cache.item].offsetHeight / 2 + 'px';
                         break;
                  }
-                _cache.container[_cache.item].style.marginTop = result;
+                //_cache.container[_cache.item].style.marginTop = result;
             }
 
             return this;
@@ -352,6 +363,7 @@ var Custombox = (function ( w, d, h ) {
                 _cache.main.classList.add('custombox-container-open');
             }
             return this;
+
         },
         binds: function () {
             var _this = this;
@@ -566,8 +578,8 @@ var Custombox = (function ( w, d, h ) {
                 // Width.
                 if ( _cache.size[i] + 60 >= w.innerWidth ) {
                     _cache.container[i].style.width = 'auto';
-                    _cache.container[i].style.marginLeft = '5%';
-                    _cache.container[i].style.marginRight = '5%';
+                    //_cache.container[i].style.marginLeft = '5%';
+                    //_cache.container[i].style.marginRight = '5%';
                     _cache.wrapper[_cache.item].style.width = w.innerWidth + 'px';
                 } else {
                     switch ( _cache.settings[_cache.item].position[0].trim() ) {
@@ -588,8 +600,8 @@ var Custombox = (function ( w, d, h ) {
 
                 // Top.
                 if ( _cache.content[i].offsetHeight >= w.innerHeight ) {
-                    _cache.container[i].style.marginTop = '5%';
-                    _cache.container[i].style.marginBottom = '5%';
+                    //_cache.container[i].style.marginTop = '5%';
+                    //_cache.container[i].style.marginBottom = '5%';
                 } else {
                     switch ( _cache.settings[_cache.item].position[1] ) {
                         case 'top':
@@ -602,7 +614,7 @@ var Custombox = (function ( w, d, h ) {
                             result = w.innerHeight / 2 - _cache.content[i].offsetHeight / 2 + 'px';
                             break;
                     }
-                    _cache.container[i].style.marginTop = result;
+                    //_cache.container[i].style.marginTop = result;
                 }
             }
         },

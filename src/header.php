@@ -8,6 +8,14 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
+
+<!-- Help out the JS find stuff -->
+<script>
+var YOURSITENAME = {
+    "templateURI":'<?= get_template_directory_uri(); ?>',
+};
+</script>
+
 </head>
 <body <?php body_class(); ?>>
   <div id="page" class="page">
