@@ -315,6 +315,11 @@
 
 	add_action('save_post', 'save_custom_meta_data');
 
+	function update_edit_form() {
+	    echo ' enctype="multipart/form-data"';
+	} // end update_edit_form
+	add_action('post_edit_form_tag', 'update_edit_form');
+
 
 	/********************************s
 	  Allow for PDF Security Uploads
