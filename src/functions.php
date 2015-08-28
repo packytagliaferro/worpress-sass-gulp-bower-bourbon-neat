@@ -98,8 +98,24 @@ add_action( 'widgets_init', 'voidx_widgets_init' );
 //Load Customizer
   add_action( 'customize_register', 'wpt_register_theme_customizer' );
 
+//Change Login logo
+  function my_login_logo() { ?>
+      <style type="text/css">
+          .login h1 a {
+              background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/site-login-logo.png);
+              background-size: auto;
+              width: 100%;
+          }
+      </style>
+  <?php }
+  add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
 //Hide the admin bar
   add_filter('show_admin_bar', '__return_false');
+  
+//No Emojis
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 // Disable support for comments and trackbacks in post types
     function df_disable_comments_post_types_support() {

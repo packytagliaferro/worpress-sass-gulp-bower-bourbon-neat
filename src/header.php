@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Description -->
+<meta name="description" content="">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="app">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Title Here" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://www.example.com/" />
+<meta property="og:image" content="http://example.com/image.jpg" />
+<meta property="og:description" content="Description Here" />
+
+<!-- Title -->
 <title><?php wp_title( ' | ', true, 'right' ); ?>  <?php bloginfo('name') ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -20,7 +34,7 @@ var YOURSITENAME = {
 <body <?php body_class(); ?>>
   <div id="page" class="page">
     <div id="wrap-header" class="wrap-header">
-      <header id="masthead" class="site-header" role="banner">
+      <header id="masthead" class="site-header">
         <div class="site-branding">
             <!-- Logo Menu -->
             <?php if ( get_theme_mod( 'wpt_logo' ) ) : ?>
@@ -33,8 +47,8 @@ var YOURSITENAME = {
           <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
-        <nav id="site-navigation" class="site-navigation" role="navigation">
-          <button id="responsive-menu-toggle" role="button" style="float:right;"><?php _e( 'Menu', 'voidx' ); ?></button>
+        <nav id="site-navigation" class="site-navigation" >
+          <button id="responsive-menu-toggle" style="float:right;"><?php _e( 'Menu', 'voidx' ); ?></button>
           <div id="responsive-menu" class="menu mobile-menu">
             <?php wp_nav_menu( array( 
                 'theme_location' => 'header', 
