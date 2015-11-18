@@ -27,7 +27,7 @@
 		);
 
 		$args = array(
-			'label'               => __( 'post_type_slug', 'text_domain' ), ////////////////////////////// the slug
+			'label'               => __( 'post_type_slug', 'text_domain' ), //-------> the slug
 			'description'         => __( 'Post Type Description', 'text_domain' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail'),
@@ -46,7 +46,7 @@
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 		);
-		register_post_type( 'post_type_slug', $args ); ////////////////////////////// change to the slug
+		register_post_type( 'post_type_slug', $args ); //-------> change to the slug
 
 	}
 
@@ -72,15 +72,17 @@
 	    'menu_name'         => __( 'Post Categories' ),
 	  );
 	  $args = array(
-	    'labels' => $labels,
-	    'hierarchical' => true,
-	    'rewrite' => array(
-		 	'slug' => 'custom_category',////////////////////////////// change to the slug
-		  	'with_front' => true,
-		  	'hierarchical' => true ,
+	    'labels' 			=> $labels,
+	    'hierarchical' 		=> true,
+	    'show_ui'           => true,
+    	'show_admin_column' => true,
+	    'rewrite' 			=> array(
+		 	'slug'				=> 'custom_category',//-------> create slug
+		  	'with_front' 		=> true,
+		  	'hierarchical'		=> true ,
 		),
 	  );
-	  register_taxonomy( 'custom_category', 'post_type_slug', $args );  ////////////////////////////// change to the slug
+	  register_taxonomy( 'custom_category', 'post_type_slug', $args );  //-------> change to the slug
 	}
 	add_action( 'init', 'my_taxonomies_custom', 0 );
 
