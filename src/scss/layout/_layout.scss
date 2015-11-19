@@ -13,7 +13,10 @@
     // Makes life a little easier
     padding: 0 spacer() 0 spacer();
 }
-
+.page{
+    min-height: 100%;
+    position: relative;
+}
 .wrap-header {
     @extend %wrap;
     background: color(header-background);

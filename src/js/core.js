@@ -76,7 +76,7 @@ Make the custom post filetrable
 
 	$('a[ocular-image]').off().on('click', function(e) {
 		
-		event.preventDefault();
+		event.preventDefault ? event.preventDefault() : event.returnValue = false;
 
 		//get the array info
 		var dataTag = $(this).attr('ocular-image');
