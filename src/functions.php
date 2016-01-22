@@ -101,10 +101,39 @@ add_action( 'widgets_init', 'voidx_widgets_init' );
 //Change Login logo
   function my_login_logo() { ?>
       <style type="text/css">
+          body{
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/site-login-bg.jpg);
+            background-size: cover;
+          }
+          #login{
+            padding: 2% 0 0;
+          }
           .login h1 a {
               background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/site-login-logo.png);
-              background-size: auto;
+              background-size: contain;
               width: 100%;
+              height: 200px;
+          }
+          .login form {
+            border-radius: 10px;
+            border:1px solid gray;
+            background: black;
+            color: white;
+          }
+          .login label{
+            color:white;
+          }
+          input{
+            border-radius:20px;
+            padding-left: 10px !important;
+          }
+          #wp-submit{
+            background: #E8E8E8;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            text-transform: uppercase;
+            border-radius: 20px;
+            border: 1px solid white;
+            color: black;
           }
       </style>
   <?php }

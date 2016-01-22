@@ -33,11 +33,11 @@ module.exports = {
 
   images: {
     build: { // Copies images from `src` to `build`; does not optimize
-      src: src+'**/*(*.png|*.jpg|*.jpeg|*.gif)'
+      src: src+'**/*(*.png|*.jpg|*.jpeg|*.svg|*.gif)'
     , dest: build
     }
   , dist: {
-      src: [dist+'**/*(*.png|*.jpg|*.jpeg|*.gif)', '!'+dist+'screenshot.png']
+      src: [dist+'**/*(*.png|*.jpg|*.jpeg|*.svg|*.gif)', '!'+dist+'screenshot.png']
     , imagemin: {
         optimizationLevel: 7
       , progressive: true
@@ -58,7 +58,7 @@ module.exports = {
     }
   , chunks: { // Chunks are arrays of globs matching source files that combine to provide specific functionality
       core: [src+'js/navigation.js', src+'js/core.js', src+'js/filter.js', src+'js/modal.js']
-    , pg8: [bower+'html5-history-api/history.js', bower+'spin.js/spin.js', bower+'spin.js/jquery.spin.js', bower+'wp-ajax-page-loader/wp-ajax-page-loader.js', src+'js/page-loader.js']
+    , pg8: [bower+'html5-history-api/history.js', bower+'spin.js/spin.js', bower+'spin.js/jquery.spin.js', bower+'wp-ajax-page-loader/wp-ajax-page-loader.js']
     }
   , dest: build+'js/' // Where the scripts end up
   , lint: {

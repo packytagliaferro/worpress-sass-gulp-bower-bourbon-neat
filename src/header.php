@@ -48,7 +48,10 @@ var YOURSITENAME = {
           <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
         </div>
         <nav id="site-navigation" class="site-navigation" >
-          <button id="responsive-menu-toggle" style="float:right;"><?php _e( 'Menu', 'voidx' ); ?></button>
+          <!-- Image for menu button <button id="responsive-menu-toggle" style="float:right;"></button> -->
+          <a href="#" class="menu-button" id="menuButton">
+            <span class="burger-icon"></span>
+          </a>
           <div id="responsive-menu" class="menu mobile-menu">
             <?php wp_nav_menu( array( 
                 'theme_location' => 'header', 

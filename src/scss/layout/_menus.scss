@@ -81,3 +81,24 @@
         display: none;
     }
 }
+// Hamburger Menu //
+.menu-button {
+    @include position(fixed, scut-em(10) scut-em(10) null null);
+    display: inline-block;
+    padding: scut-em(10);
+    background-color: $color-primary;
+    border: 1px solid #ccc;
+    z-index: 4000;
+    border-radius: 100%;
+    @include media($break-desktop) {
+        display: none;
+    }
+}
+
+.burger-icon {
+    @include burger(25px, 3px, 5px, $white);
+}
+
+.menu-button.is-active .burger-icon {
+    @include burger-to-cross;
+}
