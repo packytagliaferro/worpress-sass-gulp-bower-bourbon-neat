@@ -19,5 +19,12 @@ gulp.task('theme-lang', function() {
   .pipe(gulp.dest(config.lang.dest));
 });
 
+// Copy everything under `src/inc` indiscriminately
+gulp.task('theme-inc', function() {
+  return gulp.src(config.inc.src)
+  .pipe(plugins.changed(config.inc.dest))
+  .pipe(gulp.dest(config.inc.dest));
+});
+
 // All the theme tasks in one
-gulp.task('theme', ['theme-lang', 'theme-php']);
+gulp.task('theme', ['theme-lang', 'theme-inc', 'theme-php']);

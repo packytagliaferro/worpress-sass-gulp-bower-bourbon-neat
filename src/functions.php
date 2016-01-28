@@ -13,6 +13,12 @@ require_once( trailingslashit( get_stylesheet_directory() ) . 'inc/assets.php' )
 // Required to demonstrate WP AJAX Page Loader (as WordPress doesn't ship with simple post navigation functions)
 require_once( trailingslashit( get_stylesheet_directory() ) . 'inc/navigation.php' );
 
+// Require the meta box builder
+  define( 'RWMB_DIR', get_template_directory() . '/inc/meta-box/' );
+  define( 'RWMB_URL', get_template_directory_uri() . '/inc/meta-box/' );
+
+  require_once RWMB_DIR . 'meta-box.php';
+
 // Only the bare minimum to get the theme up and running
 function voidx_setup() {
 
@@ -134,6 +140,7 @@ add_action( 'widgets_init', 'voidx_widgets_init' );
             border-radius: 20px;
             border: 1px solid white;
             color: black;
+            text-shadow: none;
           }
       </style>
   <?php }

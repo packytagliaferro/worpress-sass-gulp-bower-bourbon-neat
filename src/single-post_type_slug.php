@@ -15,13 +15,12 @@
 			
 			<?php
 				// Store meta data in some variables 
-			    $meta_text = get_post_meta( get_the_ID(), 'meta-text', true );
-			    $meta_checkbox = get_post_meta( get_the_ID(), 'meta-checkbox', true );
+			    $meta_text = rwmb_meta( 'name', $args, $post_id );
+			    $meta_checkbox = rwmb_meta( 'gender', $args, $post_id );
 			    $meta_checkbox_two = get_post_meta( get_the_ID(), 'meta-checkbox-two', true );
-			    $meta_radio = get_post_meta( get_the_ID(), 'meta-radio', true ); 
-			    $meta_select = get_post_meta( get_the_ID(), 'meta-select', true ); 
-			    $meta_textarea = get_post_meta( get_the_ID(), 'meta-textarea', true ); 
-			    $meta_pdf  = get_post_meta(get_the_ID(), 'wp_custom_attachment', true);
+			    $meta_radio = rwmb_meta( 'email', $args, $post_id ); 
+			    $meta_select = rwmb_meta( 'bio', $args, $post_id ); 
+			    $bg = rwmb_meta( 'bg', $args, $post_id );
 			?>
 
 			<p>
@@ -69,9 +68,6 @@
 			</p>
 
 			<!-- pdf link -->
-			<a href="<?php echo $meta_pdf['url']; ?>"  target='_blank'>Download PDF Here</a>
-
-
 
 
 			<?php endwhile; endif; ?>
@@ -82,5 +78,4 @@
     </div>
   </div>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

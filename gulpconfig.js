@@ -103,6 +103,10 @@ module.exports = {
       src: src+'languages/**/*' // Glob matching any language files you'd like to copy over
     , dest: build+'languages/'
     }
+  , inc: {
+      src: src+'inc/**/*(*.js|*.mo|*.css)' // Glob matching any inc files you'd like to copy over
+    , dest: build+'inc/'
+    }
   , php: {
       src: src+'**/*.php'
     , dest: build
